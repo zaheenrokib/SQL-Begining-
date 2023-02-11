@@ -1,0 +1,40 @@
+SELECT TOP (1000) [EmployeeID]
+      ,[FirstName]
+      ,[LastName]
+      ,[Age]
+      ,[Gender]
+  FROM [D1SQL].[dbo].[EmployeeDemographics]
+
+SELECT:
+  SELECT TOP (5)*
+  FROM EmployeeDemographics
+  
+  SELECT Firstname, Lastname 
+  FROM EmployeeDemographics
+  
+DISTINCT:
+SELECT DISTINCT (EmployeeID)
+FROM EmployeeDemographics
+
+SELECT DISTINCT (Gender)
+FROM EmployeeDemographics
+
+SELECT DISTINCT (Age)
+FROM EmployeeDemographics
+
+COUNT:
+SELECT COUNT (Gender)
+FROM EmployeeDemographics
+
+SELECT COUNT (Gender) AS GenderCount 
+FROM EmployeeDemographics
+
+SELECT MAX ( Salary) AS MaxSalary
+FROM EmployeeSalary
+
+SELECT Min ( Salary) AS MinSalary
+FROM EmployeeSalary
+
+SELECT AVG ( Salary) AS AvgSalary
+FROM EmployeeSalary
+
