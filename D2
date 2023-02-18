@@ -1,0 +1,56 @@
+If using a diff database and need info from other database then gotta locate it first, like:
+SELECT  * 
+FROM D1SQL.dbo.EmployeeDemographics 
+
+
+WHERE statement is used to find specific data. Select the database first.
+SELECT * 
+FROM EmployeeDemographics 
+WHERE Firstname 'Jim' 
+WHERE Firstname 'Jim' AND Gender 'Male'        (For 2 Conditions) 
+WHERE Firstname 'Jim' OR Gender 'Male'         (For any one Condition) 
+WHERE Firstname <> 'Jim'                       ( <> means not) 
+WHERE Age >30 
+WHERE Age <37 
+WHERE Age >= 30 
+WHERE Age <= 30 
+WHERE Lastname LIKE 'S%'                       ( Everybody whose lastname starts with 'S') 
+WHERE Lastname LIKE '%S%'                      ( Everybody who has 'S' in their last name) 
+WHERE Lastname LIKE 'S%C%O%T%'                 ( Everybody Whose lastname has SCOT in the same order) 
+WHERE Firstname IS NULL                        ( Everybody who don't belong any firstname) 
+WHERE Firstname IS NOT NULL                    ( Everybody who has their firstname) 
+WHERE Firstname IN ('Jim', 'Michael')          ( IN is like multiple equation(=). It can contain more than one data) 
+  
+ 
+GROUP BY , ORDER BY:
+SELECT Gender, COUNT (Gender) 
+FROM EmployeeDemographics 
+Group By Gender
+
+SELECT Gender, COUNT (Gender)                 
+FROM EmployeeDemographics 
+WHERE Age>30
+Group By Gender      
+
+SELECT Gender, Age, COUNT (Gender) 
+FROM EmployeeDemographics 
+Group By Gender, Age 
+
+
+
+SELECT * 
+FROM EmployeeDemographics 
+ORDER BY Age                                ( Default is ASC= Lower to higher. For numbers= 1, 2, 3,... For letters= A, B, C,...) 
+
+SELECT * 
+FROM EmployeeDemographics 
+ORDER BY Age  DESC                          ( DESC= Higher to lower) 
+
+SELECT * 
+FROM EmployeeDemographics        
+ORDER BY Age DESC, Gender DESC 
+
+SELECT * 
+FROM EmployeeDemographics 
+ORDER BY 4 DESC, 5 DESC                     ( 4 no column is Age's , 5 no column is Gender's) 
+
