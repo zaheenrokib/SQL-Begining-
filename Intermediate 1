@@ -1,0 +1,59 @@
+Inner Joins , Full/ Left/ Right Outer Joins                                       ( Join multiple tables into a single output) 
+SELECT * 
+From EmployeeDemographics
+INNER JOIN EmployeeSalary                                                         ( Join both table with the matched ones only) 
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID    
+
+SELECT * 
+From EmployeeDemographics
+FULL OUTER JOIN EmployeeSalary                                                     ( Join both table individually regardless of match) 
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID    
+
+SELECT * 
+From EmployeeDemographics
+RIGHT OUTER JOIN EmployeeSalary                                                    ( Join right/second table with full info ) 
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+
+SELECT * 
+From EmployeeDemographics
+LEFT OUTER JOIN EmployeeSalary                                                     ( Join left/first table with full info ) 
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+
+SELECT EmployeeDemographics.EmployeeID, FirstName, LastName, JobTitle, Salary      ( Selecting specific columns using inner join) 
+FROM D1SQL.dbo.EmployeeDemographics
+INNER JOIN D1SQL.dbo.EmployeeSalary
+ON EmployeeDemographics.EmployeeID= EmployeeSalary.EmployeeID
+
+SELECT EmployeeDemographics.EmployeeID, FirstName, LastName, JobTitle, Salary
+FROM D1SQL.dbo.EmployeeDemographics
+LEFT OUTER JOIN D1SQL.dbo.EmployeeSalary
+ON EmployeeDemographics.EmployeeID= EmployeeSalary.EmployeeID
+
+SELECT EmployeeSalary.EmployeeID, FirstName, LastName, JobTitle, Salary
+FROM D1SQL.dbo.EmployeeDemographics
+RIGHT OUTER JOIN D1SQL.dbo.EmployeeSalary
+ON EmployeeDemographics.EmployeeID= EmployeeSalary.EmployeeID
+
+
+
+USE CASE-1 : 
+*Need the highest paid employee excluding Michael*
+
+SELECT EmployeeDemographics.EmployeeID, Firstname, Lastname, Salary 
+FROM D1SQL.dbo.EmployeeDemographics 
+INNER JOIN D1SQL.dbo.EmployeeSalary
+ON EmployeeDemographics.EmployeeID= EmployeeSalary.EmployeeID 
+WHERE Firstname <> 'Michael' 
+ORDER BY Salary DESC 
+
+
+USE CASE-2: 
+* Find the avg salary of Salesmen* 
+
+SELECT Jobtitle, AVG(Salary) 
+FROM D1SQL.dbo.EmployeeDemographics 
+INNER JOIN D1SQL.dbo.EmployeeSalary
+ON EmployeeDemographics.EmployeeID= EmployeeSalary.EmployeeID
+WHERE Jobtitle= 'Salesman'
+GROUP BY Jobtitle 
+
